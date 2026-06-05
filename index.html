@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="vi" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nguyễn Đức Quang — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta name="description" content="Portfolio của Nguyễn Đức Quang — Sinh viên Kỹ thuật Máy tính, UET-VNU. Đam mê AI, lập trình và công nghệ số.">
+<meta property="og:title" content="Nguyễn Đức Quang — Portfolio">
+<meta property="og:description" content="Sinh viên Kỹ thuật Máy tính · UET-VNU · Đam mê AI & Công nghệ số">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://quangnguyen07-pr.github.io/portfolio/">
+<meta property="og:image" content="https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/images/avatar-portrait.png">
+<meta name="theme-color" content="#05070f">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%235b8af5'/%3E%3Ctext x='50' y='72' text-anchor='middle' font-size='62' font-weight='900' font-family='Arial,sans-serif' fill='white'%3EQ%3C/text%3E%3C/svg%3E"></head>
+<body class="pv-theme-dark">
+
+<!-- PRELOADER -->
+<div id="preloader"><div class="spinner"></div></div>
+
+<!-- PAGE TRANSITION -->
+<div id="page-transition"></div>
+
+<!-- BG LAYERS (z-index 0, behind everything) -->
+<div class="circuit-overlay"></div>
+<div class="hex-grid-bg"></div>
+<canvas id="data-stream-canvas"></canvas>
+<canvas id="particle-canvas"></canvas>
+
+<!-- SCROLL PROGRESS -->
+<div id="scroll-progress"></div>
+
+<!-- CURSOR -->
+<div id="cur" class="cursor"></div>
+<div id="curR" class="cursor-ring"></div>
+
+<!-- TOAST -->
+<div id="toast">✅ Đã sao chép!</div>
+
+<!-- INTRO SCREEN -->
+<div id="intro">
+  <div class="intro-welcome">Welcome to my Portfolio</div>
+  <h2 class="intro-name">Đức Quang</h2>
+  <div class="intro-sub">Computer Engineering · UET-VNU</div>
+  <div class="intro-bar-wrap"><div class="intro-bar"></div></div>
+</div>
+
+<!-- AMBIENT ELEMENTS -->
+<div class="ambient amb1"></div>
+<div class="ambient amb2"></div>
+<div class="ambient amb3"></div>
+
+<!-- BACK TO TOP -->
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Về đầu trang">↑</button>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Đức <span>Quang</span></a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#hero">Trang chủ</a></li>
+      <li><a href="#about">Giới thiệu</a></li>
+      <li><a href="#projects">Dự án</a></li>
+      <li><a href="#skills">Kỹ năng</a></li>
+      <li><a href="#summary">Tổng kết</a></li>
+      <li><a href="#contact">Liên hệ</a></li>
+    </ul>
+    <a href="https://github.com/quangnguyen07-pr/portfolio" target="_blank" class="nav-github" title="GitHub Repository">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+    </a>
+    <div class="theme-wrap">
+      <button id="themeBtn" class="theme-btn" title="Đổi giao diện Sáng/Tối">
+        <span class="theme-icon">🌙</span>
+      </button>
+      <span class="ti" id="themeText">Dark</span>
+    </div>
+    <div class="settings-wrap">
+      <button id="settingsBtn" class="settings-btn" title="Cài đặt giao diện & Trình chiếu">
+        <span class="settings-icon">⚙️</span>
+      </button>
+      <div id="settingsDropdown" class="settings-dropdown">
+        <div class="sd-header">⚙️ Cài đặt Trải nghiệm</div>
+        <div class="sd-option">
+          <div class="sd-label-wrapper" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <span class="sd-opt-text">🖥️ Chế độ Trình chiếu</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="contrastToggle">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        <div class="sd-option">
+          <div class="sd-label-wrapper" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <span class="sd-opt-text">🔋 Tiết kiệm pin (Tắt nền động)</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="performanceToggle">
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        <div class="sd-option">
+          <div class="sd-label-wrapper" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <span class="sd-opt-text">🔊 Âm thanh click</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="soundToggle" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+        <div class="sd-option font-size-control">
+          <span class="sd-opt-text">📏 Cỡ chữ giao diện:</span>
+          <div class="fs-buttons">
+            <button onclick="changeFontSize(-1)" class="fs-btn" title="Thu nhỏ chữ">A-</button>
+            <button onclick="changeFontSize(0)" class="fs-btn font-active" id="fs-normal-btn" title="Cỡ chữ chuẩn">Chuẩn</button>
+            <button onclick="changeFontSize(1)" class="fs-btn" title="Phóng to chữ">A+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow hero-line" style="transition-delay:240ms;"><span class="edot"></span>Sinh viên UET-VNU</div>
+    <p class="hero-greeting hero-line">Xin chào, tôi là <span>Nguyễn Đức Quang</span> 👋</p>
+    <h1 class="hero-name">
+      <span class="word" style="transition-delay:0ms;">Nguyễn</span><br>
+      <span class="word g" style="transition-delay:120ms;">Đức Quang</span>
+    </h1>
+    <p class="hero-role reveal d3" id="typing-role"><span class="typing-cursor"></span></p>
+
+    <div class="info-card reveal d3">
+      <div class="info-row">
+        <span class="info-icon">🎓</span>
+        <div><div class="info-lbl">Mã sinh viên</div><div class="info-val">25020756</div></div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📚</span>
+        <div><div class="info-lbl">Lớp</div><div class="info-val">E-CE4</div></div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🏫</span>
+        <div><div class="info-lbl">Ngành</div><div class="info-val">Kỹ thuật Máy tính</div></div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🏫</span>
+        <div><div class="info-lbl">Trường</div><div class="info-val">Trường ĐH Công nghệ — ĐHQGHN</div></div>
+      </div>
+    </div>
+
+    <p class="hero-bio reveal d4">Sinh viên năm nhất với đam mê lập trình và công nghệ. Luôn học qua thực hành, hiểu sâu vấn đề, và cân nhắc trách nhiệm đạo đức khi ứng dụng công nghệ.</p>
+
+    <div class="obj-box reveal d4">
+      <div class="obj-label">Mục tiêu Portfolio</div>
+      <div class="obj-text">
+        <strong>🎯 Thể hiện kỹ năng số học được:</strong> Các dự án từ môn "Nhập môn Công nghệ Số &amp; Ứng dụng AI" — thể hiện tư duy phân tích, hiểu biết về AI, giao tiếp số, và đạo đức công nghệ.<br><br>
+        <strong>🔧 Hướng đến thực tiễn:</strong> Không chỉ biết code mà <strong>hiểu sâu</strong> vấn đề. Mục tiêu dài hạn: xây dựng sản phẩm công nghệ <strong>thực sự hữu ích</strong> cho xã hội.
+      </div>
+    </div>
+
+    <div class="action-buttons reveal d4" style="display:flex;gap:0.75rem;margin:1.5rem 0;flex-wrap:wrap;">
+      <a href="#projects" class="action-btn primary" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 1.8rem;background:linear-gradient(135deg,#5b8af5,#56d8f8);color:white;border-radius:var(--radius-md);text-decoration:none;font-weight:700;font-size:0.9rem;transition:all 0.3s;border:none;cursor:pointer;">
+        🚀 Xem Dự Án
+      </a>
+      <button onclick="openContactModal()" class="action-btn outline" style="display:inline-flex;align-items:center;gap:0.5rem;padding:0.85rem 1.8rem;background:transparent;color:var(--text);border:1.5px solid rgba(91,138,245,0.3);border-radius:var(--radius-md);font-weight:700;font-size:0.9rem;transition:all 0.3s;cursor:pointer;font-family:var(--font-body);" onmouseover="this.style.background='rgba(91,138,245,0.1)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='transparent';this.style.transform='translateY(0)'">
+        💬 Liên hệ
+      </button>
+    </div>
+
+    <div class="contact-strip reveal d5">
+      <a href="mailto:quangnguyen301007@gmail.com" class="cib" onclick="copyEmail(event)">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        <span class="tip">Click để sao chép email</span>
+      </a>
+      <a href="tel:0342499502" class="cib">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.1 11.9 19.79 19.79 0 0 1 1.07 3.27 2 2 0 0 1 3 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 5.93 5.93l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="tip">0342 499 502</span>
+      </a>
+      <a href="https://www.facebook.com/nguyen.uc.quang.377657" target="_blank" class="cib">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        <span class="tip">Facebook</span>
+      </a>
+      <a href="https://github.com/quangnguyen07-pr/portfolio" target="_blank" class="cib" aria-label="GitHub">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        <span class="tip">GitHub</span>
+      </a>
+    </div>
+    <div class="hero-tags reveal d6">
+      <span class="htag">Python</span>
+      <span class="htag">C / C++</span>
+      <span class="htag">Linux</span>
+      <span class="htag">AI / ML</span>
+      <span class="htag">Công nghệ số</span>
+    </div>
+  </div>
+
+  <div class="hero-right reveal-right">
+    <div class="avatar-wrap">
+      <div class="avatar-glow"></div>
+      <div class="avatar-ring"><div class="avatar-ring-inner"></div></div>
+      <div class="avatar-frame" style="position:relative;z-index:2;">
+        <div class="avatar-reveal-mask"></div>
+        <div class="avatar-status"><span class="status-dot"></span>Available</div>
+        <img src="https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/images/avatar-portrait.png" alt="Nguyễn Đức Quang" class="avatar-img">
+        <div class="avatar-corner tl"></div>
+        <div class="avatar-corner tr"></div>
+        <div class="avatar-corner bl"></div>
+        <div class="avatar-corner br"></div>
+      </div>
+    </div>
+    <div class="avatar-badge reveal d1">
+      <span class="ab-ico">🎓</span>
+      <div><div class="ab-lbl">Trường</div><div class="ab-val">Trường Đại học Công nghệ — ĐHQGHN</div></div>
+    </div>
+    <div class="avatar-badge reveal d2">
+      <span class="ab-ico">💻</span>
+      <div><div class="ab-lbl">Chuyên ngành</div><div class="ab-val">Kỹ thuật Máy tính</div></div>
+    </div>
+    <div class="avatar-badge reveal d3">
+      <span class="ab-ico">🪪</span>
+      <div><div class="ab-lbl">MSV · Lớp</div><div class="ab-val">25020756 · E-CE4</div></div>
+    </div>
+  </div>
+
+  <div class="scroll-ind">
+    <span>Scroll</span>
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="stats-row">
+    <div class="stat-item reveal d1"><div class="stn">7</div><div class="stl">Dự án hoàn thành</div></div>
+    <div class="stat-item reveal d2"><div class="stn">3+</div><div class="stl">Kỹ năng kỹ thuật</div></div>
+    <div class="stat-item reveal d3"><div class="stn">1</div><div class="stl">Năm học tập</div></div>
+    <div class="stat-item reveal d4"><div class="stn">∞</div><div class="stl">Đam mê học hỏi</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-chip reveal">Giới thiệu</div>
+  <h2 class="sec-title reveal">Về Bản<br>Thân Tôi</h2>
+  <div class="about-grid">
+    <div class="about-text reveal-left">
+      <p>Tôi là <strong>Nguyễn Đức Quang</strong>, sinh viên Kỹ thuật Máy tính tại Trường Đại học Công nghệ — ĐHQGHN. Tôi học tốt nhất thông qua thực hành và luôn tìm cách áp dụng kiến thức vào thực tiễn để giải quyết vấn đề thực tế.</p>
+      
+      <div class="academic-goal-box" style="margin-top: 1.5rem; padding: 1rem; border-radius: 8px; background: rgba(91,138,245,0.05); border: 1px solid rgba(91,138,245,0.15);">
+        <h3 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: var(--accent);"><span style="margin-right: 6px;">🎯</span>Mục tiêu Học tập & Định hướng</h3>
+        <p style="font-size: 0.85rem; line-height: 1.5;">Phấn đấu trở thành một Kỹ sư AI / Kỹ sư Phần mềm giỏi. Khát khao xây dựng các hệ thống AI ứng dụng cao, đảm bảo đạo đức công nghệ và bảo mật thông tin trong kỷ nguyên số.</p>
+      </div>
+
+      <div class="academic-goal-box" style="margin-top: 1rem; padding: 1rem; border-radius: 8px; background: rgba(255,212,59,0.05); border: 1px solid rgba(255,212,59,0.15);">
+        <h3 style="font-size: 0.9rem; margin-bottom: 0.5rem; color: #ffd43b;"><span style="margin-right: 6px;">📁</span>Mục tiêu Portfolio</h3>
+        <p style="font-size: 0.85rem; line-height: 1.5;">Lưu trữ, hệ thống hóa các sản phẩm cá nhân. Thể hiện năng lực ứng dụng các kỹ năng số đã học để dễ dàng chia sẻ, làm minh chứng năng lực thực tế trong mắt nhà tuyển dụng.</p>
+      </div>
+    </div>
+    <div class="about-info-grid reveal-right">
+      <div class="about-info-item">
+        <span class="aii-icon">👤</span>
+        <div><div class="aii-lbl">Họ và tên</div><div class="aii-val">Nguyễn Đức Quang</div></div>
+      </div>
+      <div class="about-info-item">
+        <span class="aii-icon">🪪</span>
+        <div><div class="aii-lbl">Mã sinh viên</div><div class="aii-val">25020756</div></div>
+      </div>
+      <div class="about-info-item">
+        <span class="aii-icon">📚</span>
+        <div><div class="aii-lbl">Lớp</div><div class="aii-val">E-CE4</div></div>
+      </div>
+      <div class="about-info-item">
+        <span class="aii-icon">🏫</span>
+        <div><div class="aii-lbl">Ngành học</div><div class="aii-val">Kỹ thuật Máy tính</div></div>
+      </div>
+      <div class="about-info-item">
+        <span class="aii-icon">🎓</span>
+        <div><div class="aii-lbl">Trường</div><div class="aii-val">Trường Đại học Công nghệ — ĐHQGHN</div></div>
+      </div>
+      <div class="about-info-item">
+        <span class="aii-icon">📧</span>
+        <div><div class="aii-lbl">Email</div><div class="aii-val"><a href="mailto:quangnguyen301007@gmail.com" style="color:var(--accent);text-decoration:none;">quangnguyen301007@gmail.com</a></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-chip reveal">Năng lực</div>
+  <h2 class="sec-title reveal">Kỹ năng &<br>Công nghệ</h2>
+  <div class="skills-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center;">
+    
+    <div class="skills-radar-container reveal-left" style="position: relative; width: 100%; aspect-ratio: 1/1; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1rem; display: flex; align-items: center; justify-content: center;">
+      <canvas id="skillsRadar"></canvas>
+    </div>
+
+    <div class="reveal-right">
+      <div class="sg-title">Chi tiết Năng lực</div>
+      <div class="skill-item reveal d1">
+        <div class="skill-logo" style="background:rgba(255,212,59,0.12);">
+          <svg width="22" height="22" viewBox="0 0 256 255" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient x1="12.959%" y1="12.039%" x2="79.639%" y2="78.201%" id="a"><stop stop-color="#387EB8" offset="0%"/><stop stop-color="#366994" offset="100%"/></linearGradient><linearGradient x1="19.128%" y1="20.579%" x2="90.742%" y2="88.429%" id="b"><stop stop-color="#FFE052" offset="0%"/><stop stop-color="#FFC331" offset="100%"/></linearGradient></defs><path d="M126.916.072c-64.832 0-60.784 28.115-60.784 28.115l.072 29.128h61.868v8.745H41.631S.145 61.355.145 126.77c0 65.417 36.21 63.097 36.21 63.097h21.61v-30.356s-1.165-36.21 35.632-36.21h61.362s34.475.557 34.475-33.319V33.97S194.67.072 126.916.072zM92.802 19.66a11.12 11.12 0 0 1 11.13 11.13 11.12 11.12 0 0 1-11.13 11.13 11.12 11.12 0 0 1-11.13-11.13 11.12 11.12 0 0 1 11.13-11.13z" fill="url(#a)"/><path d="M128.757 254.126c64.832 0 60.784-28.115 60.784-28.115l-.072-29.128H127.6v-8.745h86.441s41.486 4.705 41.486-60.712c0-65.416-36.21-63.096-36.21-63.096h-21.61v30.355s1.165 36.21-35.632 36.21h-61.362s-34.475-.557-34.475 33.32v56.013s-5.235 33.898 62.518 33.898zm34.114-19.586a11.12 11.12 0 0 1-11.13-11.13 11.12 11.12 0 0 1 11.13-11.13 11.12 11.12 0 0 1 11.13 11.13 11.12 11.12 0 0 1-11.13 11.13z" fill="url(#b)"/></svg>
+        </div>
+        <div class="skill-info">
+          <div class="skill-name">Python</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="75"></div></div>
+        </div>
+        <span class="skill-pct">75%</span>
+      </div>
+      <div class="skill-item reveal d2">
+        <div class="skill-logo" style="background:rgba(0,89,156,0.12);">
+          <svg width="22" height="22" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><path fill="#659AD3" d="M115.4 30.7L67.1 2.9c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.4 1 3.5l106.8-55.5c-.3-.9-.7-1.8-1.4-2.2z"/><path fill="#03599C" d="M10.7 95.3c.5.8 1.2 1.5 1.9 1.9l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c1.7-1 2.9-3.5 2.9-5.4V36.1c0-.9-.1-1.9-.6-2.8l-106.6 62z"/><path fill="#fff" d="M85.3 76.1C81.1 83.5 73.1 88.5 64 88.5c-13.5 0-24.5-11-24.5-24.5s11-24.5 24.5-24.5c9.1 0 17.1 5 21.3 12.5l13-7.5C92.5 32.7 79.1 24.5 64 24.5c-21.8 0-39.5 17.7-39.5 39.5s17.7 39.5 39.5 39.5c15.1 0 28.5-8.2 35.3-20.4l-13-7z"/><path fill="#fff" d="M82 64h6v-6h5v6h6v5h-6v6h-5v-6h-6zm22.5 0h6v-6h5v6h6v5h-6v6h-5v-6h-6z"/></svg>
+        </div>
+        <div class="skill-info">
+          <div class="skill-name">C / C++</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="65"></div></div>
+        </div>
+        <span class="skill-pct">65%</span>
+      </div>
+      <div class="skill-item reveal d3">
+        <div class="skill-logo" style="background:rgba(255,102,0,0.1);">
+          <svg width="22" height="22" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg"><path fill="#f5ab00" d="M63.9 2C48.3 2 36 14.3 36 29.9v20c0 7.9 3.3 15.4 8.9 20.7l-1.6 4.3C39 78.2 33.3 82.2 29 88c-3.4 4.6-6.5 12.1-4.4 17.6 1.5 4 5.9 6.4 10.6 7.3 1.5.3 3 .4 4.5.4 5.6 0 10.9-1.7 14.5-4.6 4.7 3.5 11.3 5.6 18.6 5.6 7 0 13.4-2 18-5.3 3.6 2.8 8.8 4.4 14.2 4.4 1.5 0 3.1-.1 4.6-.4 4.7-.9 9-3.3 10.6-7.3 2.1-5.5-1-13-4.4-17.6-4.3-5.8-10-9.8-14.3-13l-1.6-4.3C101.3 65.3 104 57.8 104 49.9V30c.4-15.7-12-28-40.1-28z"/></svg>
+        </div>
+        <div class="skill-info">
+          <div class="skill-name">Linux</div>
+          <div class="skill-bar-track"><div class="skill-bar-fill" data-w="60"></div></div>
+        </div>
+        <span class="skill-pct">60%</span>
+      </div>
+    </div>
+    <div>
+      <div class="sg-title reveal">Kỹ năng mềm</div>
+      <div class="tag-cloud reveal">
+        <span class="tctag">🧠 Tư duy phân tích</span>
+        <span class="tctag">🤝 Làm việc nhóm</span>
+        <span class="tctag">🔍 Giải quyết vấn đề</span>
+        <span class="tctag">💬 Giao tiếp số</span>
+        <span class="tctag">📚 Học tập liên tục</span>
+        <span class="tctag">⏱ Quản lý thời gian</span>
+        <span class="tctag">💡 Tư duy sáng tạo</span>
+        <span class="tctag">🎓 Liêm chính học thuật</span>
+      </div>
+      <div style="margin-top:1.8rem">
+        <div class="sg-title reveal">Ngoại ngữ</div>
+        <div class="lang-grid reveal">
+          <div class="lang-item">
+            <div class="lang-header">
+              <span class="lang-flag">🇻🇳</span>
+              <div class="lang-info">
+                <div class="lang-name">Tiếng Việt</div>
+                <div class="lang-level native">Bản ngữ · Native</div>
+              </div>
+              <span class="lang-badge" style="background:rgba(74,222,128,0.1);border-color:rgba(74,222,128,0.3);color:#4ade80;">C2</span>
+            </div>
+            <div class="lang-bar-track"><div class="lang-bar-fill" data-w="100" style="background:linear-gradient(90deg,#4ade80,#22d3ee);"></div></div>
+          </div>
+          <div class="lang-item">
+            <div class="lang-header">
+              <span class="lang-flag">🇬🇧</span>
+              <div class="lang-info">
+                <div class="lang-name">Tiếng Anh</div>
+                <div class="lang-level">B2 — Upper Intermediate</div>
+              </div>
+              <span class="lang-badge" style="background:rgba(91,138,245,0.1);border-color:rgba(91,138,245,0.3);color:var(--accent);">B2</span>
+            </div>
+            <div class="lang-bar-track"><div class="lang-bar-fill" data-w="72" style="background:linear-gradient(90deg,var(--accent),var(--accent2));"></div></div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:1.8rem">
+        <div class="sg-title reveal">Công cụ &amp; Môi trường</div>
+        <div class="tag-cloud reveal">
+          <span class="tctag">☁️ VS Code</span>
+          <span class="tctag">📊 Google Workspace</span>
+          <span class="tctag">🎨 Canva</span>
+          <span class="tctag">🔴 Git</span>
+          <span class="tctag">🐙 GitHub</span>
+          <span class="tctag">📋 Trello</span>
+          <span class="tctag">🟠 Ubuntu</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-chip reveal">Portfolio</div>
+  <h2 class="sec-title reveal">Bài tập &amp;<br>Dự án học tập</h2>
+  <p class="reveal" style="color:var(--muted);font-size:0.9rem;font-weight:500;margin-top:-2rem;margin-bottom:2.5rem;">Bấm <strong style="color:var(--accent)">XEM BÁO CÁO</strong> để đọc nội dung · <strong style="color:var(--accent2)">XEM TRƯỚC</strong> để xem file ngay trên web</p>
+  <div class="proj-grid">
+
+    <!-- PROJECT 01 -->
+    <div class="proj-card">
+      <div class="proj-img-wrap"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=600&h=300" alt="Hardware" class="proj-img" loading="lazy"></div>
+      <div class="proj-top">
+        <div class="pnum">Project · 01</div>
+        <div class="ptitle">Máy tính &amp; Thiết bị ngoại vi</div>
+        <div class="pdesc">
+          <div style="margin-bottom: 0.5rem;"><strong>🎯 Mục tiêu:</strong> Thao tác cơ bản với tệp tin, thư mục và hiểu cấu trúc phần cứng.</div>
+          <div><strong>⚙️ Quá trình:</strong> Phân tích nguyên lý hoạt động CPU/RAM, thiết lập quy tắc đặt tên tệp, và tối ưu hiệu suất.</div>
+        </div>
+        <div class="ptags"><span class="ptag cdr-tag">🎯 CĐR 1: Thiết bị &amp; Hệ thống</span><span class="ptag">Hardware</span><span class="ptag">CPU/GPU</span><span class="ptag">Hệ thống</span></div>
+      </div>
+      <div class="proj-bottom">
+      <div class="proj-card-nav">
+        <button class="card-nav-btn" disabled onclick="" title="Đây là báo cáo đầu tiên">&#8592;</button>
+        <span class="card-nav-label">1 / 7</span>
+        <button class="card-nav-btn" onclick="openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%202.pdf','Khai thác & Đánh giá Thông tin')" title="Khai thác & Đánh giá Thông tin →">&#8594;</button>
+      </div>
+
+        <div class="ptheory">
+          <div class="ptheory-hd" onclick="openTheory('theory-01')">
+            <span class="ptheory-lbl">📋 Xem Báo cáo</span><span class="ptheory-arrow">→</span>
+          </div>
+        </div>
+        <div class="doc-links">
+          <button onclick="openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%201.pdf','Máy tính & Thiết bị ngoại vi')" class="doc-btn primary">👁 Xem trước</button>
+          <a href="https://drive.google.com/file/d/1BE-T711xGC6x6xOGpmlq_Wu8xQFfupql/view?usp=sharing" target="_blank" class="doc-btn open-file">🔗 Mở file</a>
+          <a href="https://drive.google.com/uc?export=download&id=1BE-T711xGC6x6xOGpmlq_Wu8xQFfupql" class="doc-btn download">⬇ Tải về</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 02 -->
+    <div class="proj-card">
+      <div class="proj-img-wrap"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=600&h=300" alt="Data" class="proj-img" loading="lazy"></div>
+      <div class="proj-top">
+        <div class="pnum">Project · 02</div>
+        <div class="ptitle">Khai thác &amp; Đánh giá Thông tin</div>
+        <div class="pdesc">
+          <div style="margin-bottom: 0.5rem;"><strong>🎯 Mục tiêu:</strong> Tìm kiếm, đánh giá thông tin học thuật một cách chính xác.</div>
+          <div><strong>⚙️ Quá trình:</strong> Sử dụng toán tử tìm kiếm nâng cao (Google Search Operators) và đánh giá độ tin cậy của các nguồn tài liệu.</div>
+        </div>
+        <div class="ptags"><span class="ptag cdr-tag">🎯 CĐR 2: Đánh giá Nguồn tin</span><span class="ptag">Research</span><span class="ptag">Fact-checking</span><span class="ptag">Google Search</span></div>
+      </div>
+      <div class="proj-bottom">
+      <div class="proj-card-nav">
+        <button class="card-nav-btn" onclick="openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%201.pdf','Máy tính & Thiết bị ngoại vi')" title="← Máy tính & Thiết bị ngoại vi">&#8592;</button>
+        <span class="card-nav-label">2 / 7</span>
+        <button class="card-nav-btn" onclick="openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%203.pdf','Tổng quan về Trí tuệ Nhân tạo')" title="Tổng quan về Trí tuệ Nhân tạo →">&#8594;</button>
+      </div>
+
+        <div class="ptheory">
+          <div class="ptheory-hd" onclick="openTheory('theory-02')">
+            <span class="ptheory-lbl">📋 Xem Báo cáo</span><span class="ptheory-arrow">→</span>
+          </div>
+        </div>
+        <div class="doc-links">
+          <button onclick="openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%202.pdf','Khai thác & Đánh giá Thông tin')" class="doc-btn primary">👁 Xem trước</button>
+          <a href="https://drive.google.com/file/d/11aCsAisDzf_qg83zZhQO0AaD56z_V0mS/view?usp=sharing" target="_blank" class="doc-btn open-file">🔗 Mở file</a>
+          <a href="https://drive.google.com/uc?export=download&id=11aCsAisDzf_qg83zZhQO0AaD56z_V0mS" class="doc-btn download">⬇ Tải về</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 03 -->
+    <div class="proj-card">
+      <div class="proj-img-wrap"><img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600&h=300" alt="AI Data" class="proj-img" loading="lazy"></div>
+      <div class="proj-top">
+        <div class="pnum">Project · 03</div>
+        <div class="ptitle">Tổng quan về Trí tuệ Nhân tạo</div>
+        <div class="pdesc">
+          <div style="margin-bottom: 0.5rem;"><strong>🎯 Mục tiêu:</strong> Viết Prompt hiệu quả cho các tác vụ học tập, khai thác sức mạnh AI.</div>
+          <div><strong>⚙️ Quá trình:</strong> Nghiên cứu mô hình AI, so sánh kết quả giữa Prompt ban đầu và Prompt cải tiến để tối ưu hóa đầu ra.</div>
+        </div>
+        <div class="ptags"><span class="ptag cdr-tag">🎯 CĐR 3: Prompting &amp; AI</span><span class="ptag">AI/ML</span><span class="ptag">Deep Learning</span><span class="ptag">NLP</span></div>
+      </div>
+      <div class="proj-bottom">
+      <div class="proj-card-nav">
+        <button class="card-nav-btn" onclick="openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%202.pdf','Khai thác & Đánh giá Thông tin')" title="← Khai thác & Đánh giá Thông tin">&#8592;</button>
+        <span class="card-nav-label">3 / 7</span>
+        <button class="card-nav-btn" onclick="openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%204.pdf','Giao tiếp & Hợp tác Số')" title="Giao tiếp & Hợp tác Số →">&#8594;</button>
+      </div>
+
+        <div class="ptheory">
+          <div class="ptheory-hd" onclick="openTheory('theory-03')">
+            <span class="ptheory-lbl">📋 Xem Báo cáo</span><span class="ptheory-arrow">→</span>
+          </div>
+        </div>
+        <div class="doc-links">
+          <button onclick="openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%203.pdf','Tổng quan về Trí tuệ Nhân tạo')" class="doc-btn primary">👁 Xem trước</button>
+          <a href="https://drive.google.com/file/d/1XPG9Ldn9cR4BfIYv243IpqChYxUQFGPI/view?usp=sharing" target="_blank" class="doc-btn open-file">🔗 Mở file</a>
+          <a href="https://drive.google.com/uc?export=download&id=1XPG9Ldn9cR4BfIYv243IpqChYxUQFGPI" class="doc-btn download">⬇ Tải về</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 04 -->
+    <div class="proj-card">
+      <div class="proj-img-wrap"><img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&q=80&w=600&h=300" alt="Security" class="proj-img" loading="lazy"></div>
+      <div class="proj-top">
+        <div class="pnum">Project · 04</div>
+        <div class="ptitle">Giao tiếp &amp; Hợp tác Số</div>
+        <div class="pdesc">
+          <div style="margin-bottom: 0.5rem;"><strong>🎯 Mục tiêu:</strong> Sử dụng công cụ hợp tác trực tuyến để phối hợp quản lý dự án nhóm.</div>
+          <div><strong>⚙️ Quá trình:</strong> Ứng dụng nền tảng số (Trello, Slack, Google Workspace) để phân công nhiệm vụ và minh chứng hiệu quả làm việc nhóm.</div>
+        </div>
+        <div class="ptags"><span class="ptag cdr-tag">🎯 CĐR 4: Hợp tác &amp; Kết nối</span><span class="ptag">Teamwork</span><span class="ptag">Google Workspace</span><span class="ptag">Remote Work</span></div>
+      </div>
+      <div class="proj-bottom">
+      <div class="proj-card-nav">
+        <button class="card-nav-btn" onclick="openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%203.pdf','Tổng quan về Trí tuệ Nhân tạo')" title="← Tổng quan về Trí tuệ Nhân tạo">&#8592;</button>
+        <span class="card-nav-label">4 / 7</span>
+        <button class="card-nav-btn" onclick="openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%205.pdf','Sáng tạo Nội dung Số')" title="Sáng tạo Nội dung Số →">&#8594;</button>
+      </div>
+
+        <div class="ptheory">
+          <div class="ptheory-hd" onclick="openTheory('theory-04')">
+            <span class="ptheory-lbl">📋 Xem Báo cáo</span><span class="ptheory-arrow">→</span>
+          </div>
+        </div>
+        <div class="doc-links">
+          <button onclick="openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%204.pdf','Giao tiếp & Hợp tác Số')" class="doc-btn primary">👁 Xem trước</button>
+          <a href="https://drive.google.com/file/d/1u5XqspIxB1KDiHNRsD5PPV7AziuzPKCA/view?usp=sharing" target="_blank" class="doc-btn open-file">🔗 Mở file</a>
+          <a href="https://drive.google.com/uc?export=download&id=1u5XqspIxB1KDiHNRsD5PPV7AziuzPKCA" class="doc-btn download">⬇ Tải về</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 05 -->
+    <div class="proj-card">
+      <div class="proj-img-wrap"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=600&h=300" alt="Teamwork" class="proj-img" loading="lazy"></div>
+      <div class="proj-top">
+        <div class="pnum">Project · 05</div>
+        <div class="ptitle">Sáng tạo Nội dung Số</div>
+        <div class="pdesc">
+          <div style="margin-bottom: 0.5rem;"><strong>🎯 Mục tiêu:</strong> Sử dụng AI tạo sinh để hỗ trợ sáng tạo và thiết kế nội dung số.</div>
+          <div><strong>⚙️ Quá trình:</strong> Khai thác các công cụ để lên ý tưởng, biên tập hình ảnh/video và hoàn thiện sản phẩm.</div>
+        </div>
+        <div class="ptags"><span class="ptag cdr-tag">🎯 CĐR 5: Sáng tạo Nội dung</span><span class="ptag">Content Creation</span><span class="ptag">Canva</span><span class="ptag">AI Tools</span></div>
+      </div>
+      <div class="proj-bottom">
+      <div class="proj-card-nav">
+        <button class="card-nav-btn" onclick="openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%204.pdf','Giao tiếp & Hợp tác Số')" title="← Giao tiếp & Hợp tác Số">&#8592;</button>
+        <span class="card-nav-label">5 / 7</span>
+        <button class="card-nav-btn" onclick="openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%206.pdf','An toàn & Liêm chính Học thuật')" title="An toàn & Liêm chính Học thuật →">&#8594;</button>
+      </div>
+
+        <div class="ptheory">
+          <div class="ptheory-hd" onclick="openTheory('theory-05')">
+            <span class="ptheory-lbl">📋 Xem Báo cáo</span><span class="ptheory-arrow">→</span>
+          </div>
+        </div>
+        <div class="doc-links">
+          <button onclick="openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%205.pdf','Sáng tạo Nội dung Số')" class="doc-btn primary">👁 Xem trước</button>
+          <a href="https://drive.google.com/file/d/1sANxGyVTv73hm3wpOoySsRzpasrC6u2K/view?usp=sharing" target="_blank" class="doc-btn open-file">🔗 Mở file</a>
+          <a href="https://drive.google.com/uc?export=download&id=1sANxGyVTv73hm3wpOoySsRzpasrC6u2K" class="doc-btn download">⬇ Tải về</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 06 -->
+    <div class="proj-card">
+      <div class="proj-img-wrap"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600&h=300" alt="Data Analysis" class="proj-img" loading="lazy"></div>
+      <div class="proj-top">
+        <div class="pnum">Project · 06</div>
+        <div class="ptitle">An toàn &amp; Liêm chính Học thuật</div>
+        <div class="pdesc">
+          <div style="margin-bottom: 0.5rem;"><strong>🎯 Mục tiêu:</strong> Sử dụng AI có trách nhiệm, đảm bảo an toàn và liêm chính học thuật.</div>
+          <div><strong>⚙️ Quá trình:</strong> Phân tích rủi ro bảo mật, đạo đức AI và đề xuất các nguyên tắc ứng xử, trích dẫn chuẩn mực.</div>
+        </div>
+        <div class="ptags"><span class="ptag cdr-tag">🎯 CĐR 6: Đạo đức &amp; An toàn</span><span class="ptag">Cybersecurity</span><span class="ptag">Ethics</span><span class="ptag">2FA</span></div>
+      </div>
+      <div class="proj-bottom">
+      <div class="proj-card-nav">
+        <button class="card-nav-btn" onclick="openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%205.pdf','Sáng tạo Nội dung Số')" title="← Sáng tạo Nội dung Số">&#8592;</button>
+        <span class="card-nav-label">6 / 7</span>
+        <button class="card-nav-btn" onclick="openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%207.pdf','AI trong Khoa học & Kỹ thuật')" title="AI trong Khoa học & Kỹ thuật →">&#8594;</button>
+      </div>
+
+        <div class="ptheory">
+          <div class="ptheory-hd" onclick="openTheory('theory-06')">
+            <span class="ptheory-lbl">📋 Xem Báo cáo</span><span class="ptheory-arrow">→</span>
+          </div>
+        </div>
+        <div class="doc-links">
+          <button onclick="openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%206.pdf','An toàn & Liêm chính Học thuật')" class="doc-btn primary">👁 Xem trước</button>
+          <a href="https://drive.google.com/file/d/1_VjYnjk7bv7KGQ9QuTAvi1T59oPYeJy_/view?usp=sharing" target="_blank" class="doc-btn open-file">🔗 Mở file</a>
+          <a href="https://drive.google.com/uc?export=download&id=1_VjYnjk7bv7KGQ9QuTAvi1T59oPYeJy_" class="doc-btn download">⬇ Tải về</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECT 07 -->
+    <div class="proj-card">
+      <div class="proj-img-wrap"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=80&w=600&h=300" alt="Portfolio Coding" class="proj-img" loading="lazy"></div>
+      <div class="proj-top">
+        <div class="pnum">Project · 07</div>
+        <div class="ptitle">AI trong Khoa học &amp; Kỹ thuật</div>
+        <div class="pdesc">
+          <div style="margin-bottom: 0.5rem;"><strong>🎯 Mục tiêu:</strong> Tổng hợp kiến thức và nghiên cứu ứng dụng cho bài toán thực tế.</div>
+          <div><strong>⚙️ Quá trình:</strong> Tích hợp toàn bộ kỹ năng số đã học (tìm kiếm, AI, làm việc nhóm) để thiết kế giải pháp công nghệ chuyên sâu.</div>
+        </div>
+        <div class="ptags"><span class="ptag cdr-tag">🎯 CĐR 7: Nghiên cứu Ứng dụng</span><span class="ptag">AI Research</span><span class="ptag">AlphaFold</span><span class="ptag">Science</span></div>
+      </div>
+      <div class="proj-bottom">
+      <div class="proj-card-nav">
+        <button class="card-nav-btn" onclick="openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%206.pdf','An toàn & Liêm chính Học thuật')" title="← An toàn & Liêm chính Học thuật">&#8592;</button>
+        <span class="card-nav-label">7 / 7</span>
+        <button class="card-nav-btn" disabled onclick="" title="Đây là báo cáo cuối">&#8594;</button>
+      </div>
+
+        <div class="ptheory">
+          <div class="ptheory-hd" onclick="openTheory('theory-07')">
+            <span class="ptheory-lbl">📋 Xem Báo cáo</span><span class="ptheory-arrow">→</span>
+          </div>
+        </div>
+        <div class="doc-links">
+          <button onclick="openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%207.pdf','AI trong Khoa học & Kỹ thuật')" class="doc-btn primary">👁 Xem trước</button>
+          <a href="https://drive.google.com/file/d/1yAktGTmaRnONDiGJxZGGv7RFJViUsDvA/view?usp=sharing" target="_blank" class="doc-btn open-file">🔗 Mở file</a>
+          <a href="https://drive.google.com/uc?export=download&id=1yAktGTmaRnONDiGJxZGGv7RFJViUsDvA" class="doc-btn download">⬇ Tải về</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DRIVE FOLDER LINK -->
+  <div class="reveal" style="margin-top:2.5rem;text-align:center;">
+    <div style="background:linear-gradient(135deg,rgba(91,138,245,0.08),rgba(86,216,248,0.05));border:1px solid rgba(91,138,245,0.2);border-radius:var(--radius-md);padding:1.6rem 2rem;display:inline-flex;flex-direction:column;align-items:center;gap:1rem;max-width:520px;width:100%;">
+      <div style="font-size:0.65rem;font-weight:700;letter-spacing:0.22em;text-transform:uppercase;color:var(--accent);">📁 Toàn bộ tài liệu</div>
+      <div style="font-size:0.9rem;color:var(--muted);font-weight:600;line-height:1.6;">Xem và tải toàn bộ 7 báo cáo trong thư mục Google Drive của tôi.</div>
+      <a href="https://drive.google.com/drive/folders/1C1zrAgV9OSFPaFZPmbfQC_JRi9erOoLG" target="_blank"
+         style="display:inline-flex;align-items:center;gap:0.6rem;padding:0.85rem 2rem;background:linear-gradient(135deg,rgba(91,138,245,0.15),rgba(86,216,248,0.1));border:1px solid rgba(91,138,245,0.35);border-radius:var(--radius-md);color:var(--accent);font-weight:800;font-size:0.88rem;text-decoration:none;transition:all 0.3s;letter-spacing:0.02em;"
+         onmouseover="this.style.background='linear-gradient(135deg,rgba(91,138,245,0.28),rgba(86,216,248,0.18))';"
+         onmouseout="this.style.background='linear-gradient(135deg,rgba(91,138,245,0.15),rgba(86,216,248,0.1))';">
+        📂 Xem toàn bộ báo cáo trên Drive
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15,3 21,3 21,9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FILE PREVIEW MODAL -->
+<div id="previewModal" class="preview-modal">
+  <div class="preview-modal-overlay" onclick="closePreview()"></div>
+  <div class="preview-modal-content">
+    <div class="preview-modal-header">
+      <!-- Nút lùi -->
+      <button class="preview-nav-btn" id="prevReportBtn" onclick="navigateReport(-1)" title="Báo cáo trước">&#8592;</button>
+      <!-- Tiêu đề ở giữa -->
+      <div style="flex:1;min-width:0;text-align:center;padding:0 0.5rem;">
+        <div class="preview-modal-title" id="previewTitle">Xem trước tài liệu</div>
+        <div class="preview-counter" id="previewCounter" style="font-size:0.68rem;color:var(--muted);margin-top:2px;font-weight:600;letter-spacing:0.08em;">1 / 7</div>
+      </div>
+      <!-- Nút tiến -->
+      <button class="preview-nav-btn" id="nextReportBtn" onclick="navigateReport(1)" title="Báo cáo tiếp theo">&#8594;</button>
+      <!-- Actions -->
+      <div class="preview-modal-actions" style="margin-left:0.6rem;">
+        <a id="previewOpenLink" href="#" target="_blank" class="doc-btn open-file" style="font-size:0.7rem;padding:0.35rem 0.75rem;">🔗 Mở tab mới</a>
+        <a id="previewDownloadLink" href="#" class="doc-btn download" style="font-size:0.7rem;padding:0.35rem 0.75rem;">⬇ Tải về</a>
+        <button class="preview-modal-close" onclick="closePreview()">✕</button>
+      </div>
+    </div>
+    <div class="preview-iframe-wrap">
+      <div class="preview-loading" id="previewLoading">
+        <div class="preview-spinner"></div>
+        <span>Đang tải tài liệu...</span>
+      </div>
+      <iframe id="previewIframe" src="" allowfullscreen></iframe>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:0.75rem 1.2rem;border-top:1px solid var(--border);background:var(--surface);flex-shrink:0;gap:1rem;">
+      <button class="preview-nav-btn" onclick="navigateReport(-1)" id="prevReportBtn2" style="width:34px;height:34px;font-size:1rem;" title="Báo cáo trước">&#8592;</button>
+      <div style="display:flex;gap:0.4rem;flex:1;justify-content:center;flex-wrap:wrap;" id="reportDots"></div>
+      <button class="preview-nav-btn" onclick="navigateReport(1)" id="nextReportBtn2" style="width:34px;height:34px;font-size:1rem;" title="Báo cáo tiếp theo">&#8594;</button>
+    </div>
+  </div>
+</div>
+
+<!-- THEORY MODALS -->
+<div id="theory-modal-01" class="theory-modal">
+  <div class="theory-modal-overlay" onclick="closeTheory('theory-01')"></div>
+  <div class="theory-modal-content">
+    <div class="theory-modal-header">
+      <div><div class="theory-modal-num">Project · 01</div><div class="theory-modal-title">Máy tính &amp; Thiết bị ngoại vi</div></div>
+      <button class="theory-modal-close" onclick="closeTheory('theory-01')">✕</button>
+    </div>
+    <div class="theory-modal-body">
+      <p><strong>Hiểu biết tổng quát:</strong> Máy tính là thiết bị xử lý thông tin dựa trên các chương trình được lập trình sẵn. Nó hoạt động theo nguyên lý nhập-xử lý-xuất, với mục đích tự động hóa các tác vụ tính toán phức tạp.</p>
+      <p><strong>Các thành phần chính của máy tính:</strong></p>
+      <ul>
+        <li><strong>CPU (Central Processing Unit):</strong> Được gọi là "bộ não" của máy tính, thực hiện tất cả các phép tính, xử lý logic, điều khiển toàn bộ hệ thống. Tốc độ đo bằng GHz.</li>
+        <li><strong>RAM (Random Access Memory):</strong> Bộ nhớ tạm thời, lưu trữ dữ liệu đang xử lý. Dung lượng RAM lớn hơn giúp xử lý nhiều tác vụ cùng lúc.</li>
+        <li><strong>Ổ cứng (HDD/SSD):</strong> Lưu trữ dữ liệu lâu dài. SSD nhanh hơn HDD hàng chục lần vì không có linh kiện cơ học.</li>
+        <li><strong>GPU (Graphics Processing Unit):</strong> Chuyên xử lý đồ họa và các phép tính song song. Ngày nay cực kỳ quan trọng trong AI và Machine Learning.</li>
+        <li><strong>Mainboard (Bo mạch chủ):</strong> Kết nối tất cả các thành phần, cho phép giao tiếp qua các bus dữ liệu.</li>
+        <li><strong>Thiết bị ngoại vi:</strong> Bàn phím, chuột, màn hình, máy in — công cụ giao tiếp giữa người và máy tính.</li>
+      </ul>
+      <p><strong>Tầm quan trọng:</strong> Hiểu rõ cách các thành phần hoạt động cùng nhau giúp chọn cấu hình phù hợp, bảo trì hiệu quả, và tối ưu hóa hiệu suất cho từng mục đích sử dụng.</p>
+    </div>
+    <div class="theory-modal-footer">
+      <button onclick="closeTheory('theory-01');openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%201.pdf','Máy tính & Thiết bị ngoại vi')" class="doc-btn primary">👁 Xem trước file</button>
+      <a href="https://drive.google.com/file/d/1BE-T711xGC6x6xOGpmlq_Wu8xQFfupql/view?usp=sharing" target="_blank" class="doc-btn open-file">🔗 Mở file</a>
+      <a href="https://drive.google.com/uc?export=download&id=1BE-T711xGC6x6xOGpmlq_Wu8xQFfupql" class="doc-btn download">⬇ Tải về</a>
+    </div>
+  </div>
+</div>
+
+<div id="theory-modal-02" class="theory-modal">
+  <div class="theory-modal-overlay" onclick="closeTheory('theory-02')"></div>
+  <div class="theory-modal-content">
+    <div class="theory-modal-header">
+      <div><div class="theory-modal-num">Project · 02</div><div class="theory-modal-title">Khai thác &amp; Đánh giá Thông tin</div></div>
+      <button class="theory-modal-close" onclick="closeTheory('theory-02')">✕</button>
+    </div>
+    <div class="theory-modal-body">
+      <p><strong>Tầm quan trọng:</strong> Khai thác thông tin hiệu quả là kỹ năng thiết yếu trong thời đại thông tin, nơi dữ liệu khổng lồ xuất hiện mỗi ngày. Tìm kiếm chính xác giúp tiết kiệm thời gian và nhận được thông tin chính xác hơn.</p>
+      <p><strong>Các toán tử tìm kiếm nâng cao:</strong></p>
+      <ul>
+        <li><strong>site:domain.com</strong> — Tìm kiếm trong một trang web cụ thể. Ví dụ: <code>site:wikipedia.org machine learning</code></li>
+        <li><strong>filetype:pdf</strong> — Lọc kết quả theo loại tệp. Ví dụ: <code>AI research filetype:pdf</code></li>
+        <li><strong>"cụm từ chính xác"</strong> — Tìm đúng cụm từ. Ví dụ: <code>"machine learning algorithms"</code></li>
+        <li><strong>-từ_loại_trừ</strong> — Loại bỏ kết quả chứa một từ. Ví dụ: <code>Python -snake</code></li>
+        <li><strong>*.edu OR *.gov</strong> — Tìm trong miền giáo dục hoặc chính phủ, độ tin cậy cao hơn.</li>
+      </ul>
+      <p><strong>Đánh giá độ tin cậy thông tin:</strong></p>
+      <ul>
+        <li>✓ Kiểm tra tác giả, đơn vị công bố, bằng cấp</li>
+        <li>✓ Xem ngày cập nhật (thông tin mới hay cũ?)</li>
+        <li>✓ Xác định mục đích viết (khách quan hay quảng cáo?)</li>
+        <li>✓ Kiểm chứng từ nhiều nguồn uy tín (Wikipedia, Google Scholar)</li>
+        <li>✓ Tránh tin giả bằng cách xem lại tên website</li>
+      </ul>
+    </div>
+    <div class="theory-modal-footer">
+      <button onclick="closeTheory('theory-02');openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%202.pdf','Khai thác & Đánh giá Thông tin')" class="doc-btn primary">👁 Xem trước file</button>
+      <a href="https://drive.google.com/file/d/11aCsAisDzf_qg83zZhQO0AaD56z_V0mS/view?usp=sharing" target="_blank" class="doc-btn open-file">🔗 Mở file</a>
+      <a href="https://drive.google.com/uc?export=download&id=11aCsAisDzf_qg83zZhQO0AaD56z_V0mS" class="doc-btn download">⬇ Tải về</a>
+    </div>
+  </div>
+</div>
+
+<div id="theory-modal-03" class="theory-modal">
+  <div class="theory-modal-overlay" onclick="closeTheory('theory-03')"></div>
+  <div class="theory-modal-content">
+    <div class="theory-modal-header">
+      <div><div class="theory-modal-num">Project · 03</div><div class="theory-modal-title">Tổng quan về Trí tuệ Nhân tạo</div></div>
+      <button class="theory-modal-close" onclick="closeTheory('theory-03')">✕</button>
+    </div>
+    <div class="theory-modal-body">
+      <p><strong>Định nghĩa AI:</strong> Trí tuệ nhân tạo (Artificial Intelligence) là khả năng của máy tính thực hiện các tác vụ cần trí thông minh của con người — như học hỏi, nhận diện, quyết định, dịch thuật.</p>
+      <p><strong>Các nhánh chính của AI:</strong></p>
+      <ul>
+        <li><strong>Machine Learning (ML):</strong> Máy học từ dữ liệu mà không cần lập trình cụ thể từng bước. Ví dụ: chatbot, gợi ý sản phẩm trên Netflix.</li>
+        <li><strong>Deep Learning:</strong> Dùng mạng nơ-ron nhân tạo nhiều tầng. Cực hiệu quả cho nhận dạng ảnh, âm thanh, xử lý ngôn ngữ tự nhiên.</li>
+        <li><strong>Natural Language Processing (NLP):</strong> Giúp máy hiểu và tạo ra ngôn ngữ người. Ứng dụng: ChatGPT, dịch thuật Google.</li>
+        <li><strong>Computer Vision:</strong> Máy tính "nhìn" và phân tích hình ảnh, video. Ứng dụng: nhận diện khuôn mặt, xe tự lái, chẩn đoán y tế.</li>
+        <li><strong>Reinforcement Learning:</strong> Máy học thông qua thử sai, nhận thưởng/phạt. Dùng để huấn luyện robot, game AI.</li>
+      </ul>
+      <p><strong>Đạo đức &amp; Trách nhiệm AI:</strong> Tránh bias trong dữ liệu huấn luyện, bảo vệ quyền riêng tư, cần minh bạch khi dùng AI trong quyết định quan trọng.</p>
+    </div>
+    <div class="theory-modal-footer">
+      <button onclick="closeTheory('theory-03');openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%203.pdf','Tổng quan về Trí tuệ Nhân tạo')" class="doc-btn primary">👁 Xem trước file</button>
+      <a href="https://drive.google.com/file/d/1XPG9Ldn9cR4BfIYv243IpqChYxUQFGPI/view?usp=sharing" target="_blank" class="doc-btn open-file">🔗 Mở file</a>
+      <a href="https://drive.google.com/uc?export=download&id=1XPG9Ldn9cR4BfIYv243IpqChYxUQFGPI" class="doc-btn download">⬇ Tải về</a>
+    </div>
+  </div>
+</div>
+
+<div id="theory-modal-04" class="theory-modal">
+  <div class="theory-modal-overlay" onclick="closeTheory('theory-04')"></div>
+  <div class="theory-modal-content">
+    <div class="theory-modal-header">
+      <div><div class="theory-modal-num">Project · 04</div><div class="theory-modal-title">Giao tiếp &amp; Hợp tác Số</div></div>
+      <button class="theory-modal-close" onclick="closeTheory('theory-04')">✕</button>
+    </div>
+    <div class="theory-modal-body">
+      <p><strong>Tầm quan trọng:</strong> Giao tiếp số là kỹ năng quan trọng trong môi trường làm việc hiện đại, đặc biệt với xu hướng làm việc từ xa (remote work) ngày càng phổ biến.</p>
+      <p><strong>Các công cụ chính:</strong></p>
+      <ul>
+        <li><strong>Google Workspace:</strong> Gmail, Google Docs, Sheets, Slides — cho phép cộng tác real-time, chia sẻ file, chỉnh sửa cùng lúc.</li>
+        <li><strong>Trello / Asana:</strong> Quản lý dự án theo kanban board, giao task, theo dõi tiến độ, deadline rõ ràng.</li>
+        <li><strong>Video Conference:</strong> Google Meet, Zoom, Microsoft Teams cho họp online có camera.</li>
+        <li><strong>Slack / Discord:</strong> Chat nhóm chuyên nghiệp, tổ chức theo kênh chủ đề, lưu lịch sử cuộc trò chuyện.</li>
+      </ul>
+      <p><strong>Nguyên tắc giao tiếp hiệu quả:</strong></p>
+      <ul>
+        <li>📝 Viết rõ ràng, đủ chi tiết, tránh viết tắt quá nhiều</li>
+        <li>⏰ Trả lời đúng hạn, không để người khác chờ lâu</li>
+        <li>🎯 Chọn công cụ phù hợp (email cho chính thức, chat cho nhanh)</li>
+        <li>🙏 Tôn trọng thời gian người khác, tránh nhắn ngoài giờ làm việc</li>
+        <li>✅ Xác nhận nhận được thông tin quan trọng</li>
+      </ul>
+    </div>
+    <div class="theory-modal-footer">
+      <button onclick="closeTheory('theory-04');openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%204.pdf','Giao tiếp & Hợp tác Số')" class="doc-btn primary">👁 Xem trước file</button>
+      <a href="https://drive.google.com/file/d/1u5XqspIxB1KDiHNRsD5PPV7AziuzPKCA/view?usp=sharing" target="_blank" class="doc-btn open-file">🔗 Mở file</a>
+      <a href="https://drive.google.com/uc?export=download&id=1u5XqspIxB1KDiHNRsD5PPV7AziuzPKCA" class="doc-btn download">⬇ Tải về</a>
+    </div>
+  </div>
+</div>
+
+<div id="theory-modal-05" class="theory-modal">
+  <div class="theory-modal-overlay" onclick="closeTheory('theory-05')"></div>
+  <div class="theory-modal-content">
+    <div class="theory-modal-header">
+      <div><div class="theory-modal-num">Project · 05</div><div class="theory-modal-title">Sáng tạo Nội dung Số</div></div>
+      <button class="theory-modal-close" onclick="closeTheory('theory-05')">✕</button>
+    </div>
+    <div class="theory-modal-body">
+      <p><strong>Định nghĩa:</strong> Sáng tạo nội dung số (Digital Content Creation) bao gồm các hình thức biểu đạt ý tưởng, tri thức qua phương tiện kỹ thuật số — ảnh, video, infographic, podcast, bài viết trực tuyến.</p>
+      <p><strong>Các hình thức &amp; công cụ chính:</strong></p>
+      <ul>
+        <li><strong>Thiết kế đồ họa:</strong> Canva (dễ dùng, miễn phí), Adobe Photoshop/Illustrator (chuyên nghiệp), Figma (design UI/UX).</li>
+        <li><strong>Video &amp; Reels:</strong> CapCut (đơn giản), Adobe Premiere (chuyên nghiệp), DaVinci Resolve (free nhưng mạnh), OBS (live streaming).</li>
+        <li><strong>AI Generative:</strong> Midjourney, DALL·E, Stable Diffusion tạo ảnh từ text. ChatGPT viết content. Murf.ai tạo giọng nói AI.</li>
+        <li><strong>Viết nội dung:</strong> SEO writing, copywriting, kỹ thuật viết prompt cho AI.</li>
+      </ul>
+      <p><strong>Quy trình sáng tạo nội dung chuyên nghiệp:</strong></p>
+      <ul>
+        <li>💡 <strong>Ý tưởng:</strong> Xác định đối tượng, mục đích, bối cảnh</li>
+        <li>📋 <strong>Lên kế hoạch:</strong> Script, storyboard, outline</li>
+        <li>🎬 <strong>Thực hiện:</strong> Quay video, chụp ảnh, viết bài</li>
+        <li>✏️ <strong>Chỉnh sửa:</strong> Edit, color grade, fact-check</li>
+        <li>📤 <strong>Phân phối:</strong> Đẩy lên các nền tảng phù hợp</li>
+      </ul>
+    </div>
+    <div class="theory-modal-footer">
+      <button onclick="closeTheory('theory-05');openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%205.pdf','Sáng tạo Nội dung Số')" class="doc-btn primary">👁 Xem trước file</button>
+      <a href="https://drive.google.com/file/d/1sANxGyVTv73hm3wpOoySsRzpasrC6u2K/view?usp=sharing" target="_blank" class="doc-btn open-file">🔗 Mở file</a>
+      <a href="https://drive.google.com/uc?export=download&id=1sANxGyVTv73hm3wpOoySsRzpasrC6u2K" class="doc-btn download">⬇ Tải về</a>
+    </div>
+  </div>
+</div>
+
+<div id="theory-modal-06" class="theory-modal">
+  <div class="theory-modal-overlay" onclick="closeTheory('theory-06')"></div>
+  <div class="theory-modal-content">
+    <div class="theory-modal-header">
+      <div><div class="theory-modal-num">Project · 06</div><div class="theory-modal-title">An toàn &amp; Liêm chính Học thuật</div></div>
+      <button class="theory-modal-close" onclick="closeTheory('theory-06')">✕</button>
+    </div>
+    <div class="theory-modal-body">
+      <p><strong>Tầm quan trọng:</strong> An toàn thông tin và liêm chính học thuật là hai trụ cột quan trọng của công dân số có trách nhiệm. Kỹ năng này bảo vệ bản thân, gia đình, và cả cộng đồng.</p>
+      <p><strong>An toàn thông tin cá nhân:</strong></p>
+      <ul>
+        <li>🔐 <strong>Mật khẩu mạnh:</strong> Tối thiểu 12 ký tự, gồm chữ hoa, thường, số, ký tự đặc biệt. Dùng password manager (Bitwarden, 1Password).</li>
+        <li>🔑 <strong>Xác thực 2 lớp (2FA):</strong> Bật trên mọi tài khoản quan trọng. Dùng authenticator app thay vì SMS.</li>
+        <li>📧 <strong>Cẩn thận với phishing:</strong> Email giả mạo để lừa nhập mật khẩu. Kiểm tra email thực sự trước khi click.</li>
+        <li>🌐 <strong>WiFi công cộng:</strong> Tránh truy cập tài khoản nhạy cảm, dùng VPN nếu cần.</li>
+        <li>📱 <strong>Cập nhật hệ điều hành:</strong> Các bản cập nhật có vá lỗi bảo mật quan trọng.</li>
+      </ul>
+      <p><strong>Liêm chính &amp; Bản quyền học thuật:</strong></p>
+      <ul>
+        <li>✍️ <strong>Không đạo văn:</strong> Luôn ghi rõ nguồn khi trích dẫn. Dùng định dạng APA, IEEE, Harvard.</li>
+        <li>📚 <strong>Tôn trọng bản quyền:</strong> Chỉ dùng ảnh, video, âm nhạc có giấy phép hoặc được phép.</li>
+        <li>🤖 <strong>AI có đạo đức:</strong> Khi dùng ChatGPT trong bài nộp, phải khai báo rõ ràng.</li>
+        <li>🚫 <strong>Không gian lận:</strong> Không copy-paste hoàn toàn, không chép bài của bạn.</li>
+      </ul>
+    </div>
+    <div class="theory-modal-footer">
+      <button onclick="closeTheory('theory-06');openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%206.pdf','An toàn & Liêm chính Học thuật')" class="doc-btn primary">👁 Xem trước file</button>
+      <a href="https://drive.google.com/file/d/1_VjYnjk7bv7KGQ9QuTAvi1T59oPYeJy_/view?usp=sharing" target="_blank" class="doc-btn open-file">🔗 Mở file</a>
+      <a href="https://drive.google.com/uc?export=download&id=1_VjYnjk7bv7KGQ9QuTAvi1T59oPYeJy_" class="doc-btn download">⬇ Tải về</a>
+    </div>
+  </div>
+</div>
+
+<div id="theory-modal-07" class="theory-modal">
+  <div class="theory-modal-overlay" onclick="closeTheory('theory-07')"></div>
+  <div class="theory-modal-content">
+    <div class="theory-modal-header">
+      <div><div class="theory-modal-num">Project · 07</div><div class="theory-modal-title">AI trong Khoa học &amp; Kỹ thuật</div></div>
+      <button class="theory-modal-close" onclick="closeTheory('theory-07')">✕</button>
+    </div>
+    <div class="theory-modal-body">
+      <p><strong>Tổng quan:</strong> AI đang cách mạng hóa nghiên cứu khoa học và kỹ thuật ở mọi lĩnh vực, từ y học đến khí tượng, năng lượng. Những ứng dụng này giải quyết bài toán mà con người không thể làm nhanh.</p>
+      <p><strong>Ứng dụng thực tế của AI:</strong></p>
+      <ul>
+        <li><strong>🧬 Y sinh học:</strong> AlphaFold (DeepMind) dự đoán cấu trúc protein 3D, rút ngắn thời gian nghiên cứu phát triển thuốc từ năm xuống tháng.</li>
+        <li><strong>🌦️ Khí tượng học:</strong> GraphCast (Google) dự báo thời tiết 10 ngày chính xác hơn các mô hình truyền thống 40 năm kinh nghiệm.</li>
+        <li><strong>⚙️ Kỹ thuật:</strong> AI tối ưu hóa thiết kế kết cấu, phát hiện lỗi sản xuất, điều khiển robot công nghiệp và xe tự lái.</li>
+        <li><strong>⚡ Năng lượng:</strong> AI quản lý lưới điện thông minh, tối ưu hóa thiết kế pin mặt trời, quạt gió.</li>
+        <li><strong>🔭 Vũ trụ học:</strong> Phân tích khối lượng dữ liệu thiên văn, tự động phát hiện hành tinh mới, sóng hấp dẫn.</li>
+        <li><strong>🏥 Chẩn đoán y tế:</strong> AI phân tích ảnh X-ray, CT, MRI phát hiện ung thư, bệnh tim sớm hơn con người.</li>
+      </ul>
+      <p><strong>Thách thức &amp; Hạn chế:</strong></p>
+      <ul>
+        <li>⚠️ <strong>Bias trong dữ liệu:</strong> Nếu dữ liệu huấn luyện thiên vị, AI sẽ học lại cái thiên vị đó.</li>
+        <li>💰 <strong>Chi phí tính toán cao:</strong> Huấn luyện mô hình AI lớn cần GPU/TPU đắt tiền, tiêu thụ điện nhiều.</li>
+        <li>🔮 <strong>Thiếu tính giải thích (Black box):</strong> Không biết tại sao AI đưa ra quyết định. Nguy hiểm trong y tế, pháp lý.</li>
+        <li>📊 <strong>Thiếu dữ liệu chất lượng:</strong> Nếu dữ liệu ít hoặc kém chất lượng, AI không hoạt động tốt.</li>
+      </ul>
+    </div>
+    <div class="theory-modal-footer">
+      <button onclick="closeTheory('theory-07');openPreview('https://raw.githubusercontent.com/quangnguyen07-pr/portfolio/main/files/Bai%207.pdf','AI trong Khoa học & Kỹ thuật')" class="doc-btn primary">👁 Xem trước file</button>
+      <a href="https://drive.google.com/file/d/1yAktGTmaRnONDiGJxZGGv7RFJViUsDvA/view?usp=sharing" target="_blank" class="doc-btn open-file">🔗 Mở file</a>
+      <a href="https://drive.google.com/uc?export=download&id=1yAktGTmaRnONDiGJxZGGv7RFJViUsDvA" class="doc-btn download">⬇ Tải về</a>
+    </div>
+  </div>
+</div>
+
+<!-- SUMMARY -->
+<section id="summary">
+  <div class="sec-chip reveal">Nhìn lại</div>
+  <h2 class="sec-title reveal">Tổng kết &amp;<br>Trải nghiệm</h2>
+  <div class="sum-grid">
+    <div class="sum-card reveal-left">
+      <h3>📚 Kiến Thức Đạt Được</h3>
+      <ul>
+        <li>💻 Hiểu sâu về cách thức hoạt động của máy tính và kiến trúc phần cứng</li>
+        <li>🔍 Thành thạo kỹ năng khai thác, đánh giá và lọc thông tin uy tín từ nhiều nguồn</li>
+        <li>🤖 Nắm vững các ứng dụng thực tiễn và giới hạn của Trí tuệ nhân tạo</li>
+        <li>👥 Biết cách giao tiếp, hợp tác hiệu quả trong môi trường số</li>
+        <li>🛡️ Ý thức được tầm quan trọng của an toàn thông tin và liêm chính học thuật</li>
+        <li>✨ Sáng tạo nội dung số chất lượng cao với các công cụ hiện đại</li>
+      </ul>
+    </div>
+    <div class="sum-card reveal-right">
+      <h3>🎯 Thách Thức &amp; Bài Học Quan Trọng</h3>
+      <table class="challenge-table">
+        <tr><td>🌊 Lọc thông tin trong biển dữ liệu</td><td>Cần phương pháp đánh giá nguồn có hệ thống</td></tr>
+        <tr><td>🗣️ Viết Prompt rõ ràng cho AI</td><td>AI là công cụ — chất lượng input = chất lượng output</td></tr>
+        <tr><td>⏰ Lạm dụng AI tiết kiệm thời gian</td><td>Nên dùng AI để học sâu hơn, phát triển tư duy</td></tr>
+        <tr><td>📖 Giữ gìn liêm chính học thuật</td><td>Bản quyền và đạo đức có giá trị thực sự</td></tr>
+        <tr><td>🔧 Phụ thuộc quá vào công nghệ</td><td>Công nghệ là công cụ — con người vẫn là trung tâm</td></tr>
+        <tr><td>📖 Môi trường thay đổi nhanh</td><td>Tự học và kiên trì là chìa khóa thành công</td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="sum-card reveal-scale" style="margin-top:2rem;">
+    <h3>🚀 Định Hướng Phát Triển</h3>
+    <div class="dev-section">
+      <h4>📅 Ngắn Hạn (6-12 tháng)</h4>
+      <ul>
+        <li>🐍 <strong>Lập trình Python:</strong> Thành thạo các thư viện chuyên sâu (Pandas, NumPy, Scikit-learn, Matplotlib)</li>
+        <li>📊 <strong>Xử lý dữ liệu:</strong> Học sâu về Data Cleaning, EDA, Feature Engineering</li>
+        <li>💬 <strong>Kỹ năng giao tiếp:</strong> Cải thiện trình bày ý tưởng, viết báo cáo kỹ thuật</li>
+        <li>🔨 <strong>Công cụ thực hành:</strong> Thành thạo Jupyter Notebook, Git/GitHub, Linux CLI</li>
+      </ul>
+    </div>
+    <div class="dev-section">
+      <h4>📅 Trung Hạn (1-2 năm)</h4>
+      <ul>
+        <li>🧠 <strong>Machine Learning &amp; Deep Learning:</strong> Nắm vững thuật toán ML, học TensorFlow, PyTorch</li>
+        <li>🔬 <strong>Nghiên cứu:</strong> Ứng dụng AI vào các bài toán thực tiễn, tham gia dự án nghiên cứu</li>
+        <li>📝 <strong>Viết bài báo:</strong> Biên soạn báo cáo kỹ thuật, submit lên hội nghị, tạp chí</li>
+      </ul>
+    </div>
+    <div class="dev-section">
+      <h4>📅 Dài Hạn (3+ năm)</h4>
+      <ul>
+        <li>🌱 <strong>Phát triển sản phẩm:</strong> Xây dựng giải pháp AI có tác động thực tế</li>
+        <li>🌍 <strong>Trách nhiệm xã hội:</strong> Sử dụng công nghệ có trách nhiệm, đạo đức, bền vững</li>
+        <li>🎓 <strong>Chia sẻ kiến thức:</strong> Viết blog, dạy học, hướng dẫn sinh viên</li>
+      </ul>
+    </div>
+  </div>
+  <div class="sum-card reveal-scale" style="margin-top:2rem;background:rgba(86,216,248,0.04);border-color:rgba(86,216,248,0.18);">
+    <h3>💡 Cam Kết Khi Học Môn Này</h3>
+    <div class="commitment-grid">
+      <div class="commit-item"><strong>✅ Luôn Học Hỏi</strong><br>Không ngừng cập nhật kiến thức và kỹ năng mới</div>
+      <div class="commit-item"><strong>✅ Hành Động Có Đạo Đức</strong><br>Sử dụng công nghệ vì lợi ích chung của xã hội</div>
+      <div class="commit-item"><strong>✅ Chất Lượng Trước Tốc Độ</strong><br>Ưu tiên hiểu sâu hơn là hoàn thành nhanh</div>
+      <div class="commit-item"><strong>✅ Cộng Tác &amp; Chia Sẻ</strong><br>Làm việc với người khác và đóng góp cho cộng đồng</div>
+    </div>
+    <p style="margin-top:1.5rem;text-align:center;color:var(--muted);font-size:0.9rem;font-style:italic;font-weight:500;">Môn "Nhập môn Công nghệ Số &amp; Ứng dụng AI" là khởi đầu mạnh mẽ trong hành trình trở thành kỹ sư có tác động tích cực. Tôi sẵn sàng tiếp tục và luôn mở với mọi thách thức phía trước! 🎯</p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-section-inner" style="max-width:1100px; margin:0 auto;">
+    <div class="sec-chip reveal">Liên hệ</div>
+    <h2 class="sec-title reveal">Kết Nối<br>Với Tôi</h2>
+    
+    <div class="contact-wrapper reveal-scale">
+      <!-- Left: Contact Info -->
+      <div class="contact-info-side">
+        <h3>Thông Tin Liên Hệ</h3>
+        <p>Tôi luôn cởi mở với các cơ hội hợp tác và dự án mới. Đừng ngần ngại liên hệ!</p>
+        
+        <div class="c-info-list">
+          <div class="c-info-item">
+            <div class="c-icon">📧</div>
+            <div class="c-text">
+              <span class="c-lbl">Email</span>
+              <a href="mailto:quangnguyen301007@gmail.com" class="c-val">quangnguyen301007@gmail.com</a>
+            </div>
+          </div>
+          <div class="c-info-item">
+            <div class="c-icon">📱</div>
+            <div class="c-text">
+              <span class="c-lbl">Điện thoại</span>
+              <a href="tel:0342499502" class="c-val">0342 499 502</a>
+            </div>
+          </div>
+          <div class="c-info-item">
+            <div class="c-icon">📍</div>
+            <div class="c-text">
+              <span class="c-lbl">Địa điểm</span>
+              <span class="c-val" style="color:var(--text);">Hà Nội, Việt Nam</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="c-socials">
+          <a href="https://www.facebook.com/nguyen.uc.quang.377657" target="_blank" class="c-social-btn" title="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+          <a href="https://github.com/quangnguyen07-pr/portfolio" target="_blank" class="c-social-btn" title="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Contact Form -->
+      <div class="contact-form-side">
+        <form action="https://formsubmit.co/quangnguyen301007@gmail.com" method="POST" class="modern-form">
+          <!-- FormSubmit Config -->
+          <input type="hidden" name="_subject" value="Email mới từ Portfolio!">
+          <input type="hidden" name="_captcha" value="false">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://quangnguyen07-pr.github.io/portfolio/"> <!-- Sau chỉnh URL github pages -->
+
+          <div class="form-group-row">
+            <div class="form-group">
+              <label for="name">Tên của bạn</label>
+              <input type="text" id="name" name="name" placeholder="Ví dụ: Nguyễn Văn A" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Ví dụ: email@domain.com" required>
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label for="subject">Chủ đề</label>
+            <input type="text" id="subject" name="_subject" placeholder="Bạn muốn trao đổi về điều gì?">
+          </div>
+
+          <div class="form-group">
+            <label for="message">Nội dung</label>
+            <textarea id="message" name="message" rows="5" placeholder="Viết tin nhắn của bạn ở đây..." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <span>Gửi Tin Nhắn</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT MODAL (Feedback) -->
+<div id="contactModal" class="contact-modal">
+  <div class="contact-modal-overlay"></div>
+  <div class="contact-modal-content">
+    <button class="contact-modal-close" onclick="closeContactModal()">✕</button>
+    <div class="contact-modal-inner">
+      <h2>📋 Thông Tin Liên Hệ</h2>
+      <p class="contact-modal-intro">Cảm ơn bạn quan tâm! Dưới đây là các cách để liên hệ với tôi:</p>
+      <div class="contact-modal-grid">
+        <div class="contact-modal-item">
+          <div class="contact-modal-icon">📧</div>
+          <h3>Email</h3>
+          <a href="mailto:quangnguyen301007@gmail.com" class="contact-modal-link">quangnguyen301007@gmail.com</a>
+          <p class="contact-modal-desc">Phản hồi trong vòng 24h</p>
+        </div>
+        <div class="contact-modal-item">
+          <div class="contact-modal-icon">📱</div>
+          <h3>Điện Thoại</h3>
+          <a href="tel:0342499502" class="contact-modal-link">0342 499 502</a>
+          <p class="contact-modal-desc">Thứ 2 - Thứ 6: 8h - 18h</p>
+        </div>
+        <div class="contact-modal-item">
+          <div class="contact-modal-icon">👥</div>
+          <h3>Facebook</h3>
+          <a href="https://www.facebook.com/nguyen.uc.quang.377657" target="_blank" class="contact-modal-link">Nguyễn Đức Quang</a>
+          <p class="contact-modal-desc">Inbox trực tiếp</p>
+        </div>
+        <div class="contact-modal-item">
+          <div class="contact-modal-icon">🎓</div>
+          <h3>Trường Học</h3>
+          <p class="contact-modal-link">Trường Đại học Công nghệ — ĐHQGHN</p>
+          <p class="contact-modal-desc">Kỹ thuật Máy tính · E-CE4</p>
+        </div>
+        <div class="contact-modal-item">
+          <div class="contact-modal-icon" style="display:flex;align-items:center;justify-content:center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="color:var(--text)"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          </div>
+          <h3>GitHub</h3>
+          <a href="https://github.com/quangnguyen07-pr/portfolio" target="_blank" class="contact-modal-link">quangnguyen07-pr</a>
+          <p class="contact-modal-desc">Source code · Portfolio</p>
+        </div>
+      </div>
+      <div class="contact-modal-message">
+        <p>💬 <strong>Có câu hỏi hay đề xuất?</strong> Hãy liên hệ tôi qua bất kỳ kênh nào trên đây. Tôi sẽ cố gắng phản hồi nhanh nhất!</p>
+      </div>
+      <button class="contact-modal-btn" onclick="closeContactModal()">Đóng</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 <b>Nguyễn Đức Quang</b> · MSV: 25020756 · Lớp E-CE4 · UET-VNU</span>
+  <a href="https://github.com/quangnguyen07-pr/portfolio" target="_blank" style="display:inline-flex;align-items:center;gap:0.4rem;color:var(--muted);text-decoration:none;font-size:0.75rem;font-weight:600;transition:color 0.3s;" onmouseover="this.style.color='var(--accent)'" onmouseout="this.style.color='var(--muted)'">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+    View on GitHub
+  </a>
+  <span>Built with <b>Vibe Coding</b> ✦ AI-Assisted</span>
+</footer>
+
+<!-- LOFI MUSIC PLAYER -->
+<div id="lofi-player" class="lofi-player">
+  <button id="lofi-toggle-btn" class="lofi-btn" title="Phát nhạc Lofi góc học tập">
+    <span class="lofi-icon">🎧</span> Lo-Fi
+  </button>
+  <audio id="lofi-audio" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
+  </audio>
+<script src="script.js"></script>
+</body>
+</html>
+
+
